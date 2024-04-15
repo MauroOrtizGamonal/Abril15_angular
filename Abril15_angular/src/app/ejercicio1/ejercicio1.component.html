@@ -1,0 +1,10 @@
+<div>
+    <h1>Ejercicio 1</h1>
+
+    <button (click)="calcularPagos()">Calcular Pagos</button>
+
+    <div *ngIf="pagosCalculados">
+        <p>{{ resultadoPagoInteres }}</p>
+        <p>{{ resultadoPagoConvencional }}</p>
+    </div>
+</div>

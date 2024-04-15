@@ -1,0 +1,47 @@
+<div class="container">
+    <H1>Ejercicio 4</H1>
+    <h3>Formulario de PC</h3>
+  
+    <form [formGroup]="formulario">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" formControlName="nombre" class="form-control">
+      </div>
+  
+      <div class="form-group">
+        <label for="genero">Género:</label>
+        <select id="genero" formControlName="genero" class="form-control">
+          <option value="mujer">Mujer</option>
+          <option value="hombre">Hombre</option>
+          <option value="otro">Otros</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="nacionalidades">Nacionalidades:</label>
+        <select multiple id="nacionalidades" formControlName="nacionalidades" class="form-control">
+          <option *ngFor="let nacionalidad of nacionalidades" [value]="nacionalidad">{{nacionalidad}}</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="lenguajes">Lenguajes de programación:</label>
+        <select multiple id="lenguajes" formControlName="lenguajes" class="form-control">
+          <option *ngFor="let lenguaje of lenguajes" [value]="lenguaje">{{lenguaje}}</option>
+        </select>
+      </div>
+  
+      <button type="button" class="btn btn-primary" (click)="mostrarInformacion()">Mostrar información</button>
+    </form>
+  
+    <div class="modal" id="modalInformacion">
+      <div class="modal-content">
+        <span class="close" (click)="onClose()">&times;</span>
+        <h2>Información del usuario</h2>
+        <p>Nombre: {{ formulario.value.nombre }}</p>
+        <p>Género: {{ formulario.value.genero }}</p>
+        <p>Nacionalidades: {{ formulario.value.nacionalidades.join(', ') }}</p>
+        <p>Lenguajes de programación: {{ formulario.value.lenguajes.join(', ') }}</p>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,49 @@
+<div>
+  <h1>Ejercicio2</h1>
+  <h3>Arma tu PC</h3>
+
+  <div class="ram">
+    <h3>Tamaño de la RAM</h3>
+    <div *ngFor="let ramOption of ramOptions">
+      <label>
+        <input type="radio" name="ram" [(ngModel)]="selectedRam" [value]="ramOption">
+        {{ ramOption }}
+      </label>
+    </div>
+  </div>
+
+  <div class="procesador">
+    <h3>Tipo de procesador</h3>
+    <select [(ngModel)]="selectedProcessor">
+      <option *ngFor="let processorOption of processorOptions" [value]="processorOption">{{ processorOption }}</option>
+    </select>
+  </div>
+
+  <div class="tarjeta-grafica">
+    <h3>Tarjeta Gráfica</h3>
+    <select [(ngModel)]="selectedGraphicsCard">
+      <option *ngFor="let graphicsCardOption of graphicsCardOptions" [value]="graphicsCardOption">{{ graphicsCardOption }}</option>
+    </select>
+  </div>
+
+  <div class="discos-duros">
+    <h3>Discos Duros</h3>
+    <button type="button" (click)="addHardDriveOption()">Agregar Disco Duro</button>
+    <p *ngFor="let hardDriveOption of hardDrivesOptions; let i = index">
+      <label>
+        <input type="checkbox" [(ngModel)]="selectedHardDrives[i]" [value]="hardDriveOption">
+        {{ hardDriveOption }}
+      </label>
+    </p>
+    <button type="button" (click)="removeHardDriveOption()" [disabled]="selectedHardDrives.length === 0">Eliminar Disco Duro</button>
+  </div>
+
+  <div class="fuentes-alimentacion">
+    <h3>Fuentes de Alimentación</h3>
+    <select [(ngModel)]="selectedPowerSupply">
+      <option *ngFor="let powerSupplyOption of powerSupplyOptions" [value]="powerSupplyOption">{{ powerSupplyOption }}</option>
+    </select>
+  </div>
+
+  <button type="button" (click)="mostrarInformacion()">Mostrar Información</button>
+</div>
